@@ -8,6 +8,16 @@ const newUserSchema = new mongoose.Schema(
       required: true,
       label: "username",
     },
+    lastName: {
+      type: String,
+      required: true,
+      label: "lastName",
+    },
+    firstName: {
+      type: String,
+      required: true,
+      label: "firstName",
+    },
     email: {
       type: String,
       required: true,
@@ -17,6 +27,11 @@ const newUserSchema = new mongoose.Schema(
       required: true,
       type: String,
       min : 8
+    },
+    role: {
+      type: String,
+      required: false,
+      label: "role",
     },
     date: {
       type: Date,
