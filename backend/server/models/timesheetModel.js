@@ -14,14 +14,14 @@ const newTimesheetSchema = new mongoose.Schema(
       label: "projectprojectName",
     },
     hours: { 
-      type: Float,
+      type: Number,
       required: true,
       label: "hours",
     },
     date: {
       type: Date,
       default: Date.now,
-    },
+    }, // Need to either tie UserID to here, or TimesheetID to User
   },
   { collection: "timesheets" }
 );
