@@ -1,20 +1,17 @@
-import React, {} from 'react'
-import Card from 'react-bootstrap/Card';
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import './LandingPage.css'; 
 
 const Landingpage = () => {
-    
-    return (
-        <Card style={{ width: '30rem' }} className="mx-2 my-2">
-        <Card.Body>
-          <Card.Title>Professor Brockenbrough's User Skeleton App</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">A starting point for an application.</Card.Subtitle>
-          <Card.Text>
-          </Card.Text>
-          <Card.Link href="/signup">Sign Up</Card.Link>
-          <Card.Link href="/login">Login</Card.Link>
-        </Card.Body>
-      </Card>
-    )
-}
+  return (
+    <div className="landing-container">
+      <h1 className="landing-title">Pionarch</h1>
+      
+      <Button variant="primary" size="lg" href="/signup" className="landing-button">
+        Register
+      </Button>
+    </div>
+  );
+};
 
-export default Landingpage
+export default Landingpage;

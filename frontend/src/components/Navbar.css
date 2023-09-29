@@ -1,0 +1,28 @@
+/* Navbar.css */
+
+/* Remove expanding behavior */
+.custom-navbar .navbar-collapse {
+  flex-grow: unset;
+}
+
+/* Set the background color to white */
+.custom-navbar {
+  background-color: white;
+  border-top: 1px solid #ccc; /* Optional: Add a border at the top of the Navbar */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Customize the Navbar links */
+.custom-navbar .nav-link {
+  color: #333; /* Link color */
+  padding: 20px 40px; /* Adjust padding to make items 5x bigger */
+  font-size: 25px; /* Make text 5x bigger */
+  text-align: center; /* Center the text horizontally */
+  border-left: 1px solid #ccc; /* Optional: Add a border between links */
+}
+
+.custom-navbar .nav-link:first-child {
+  border-left: none; /* Remove border from the first link */
+}

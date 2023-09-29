@@ -8,8 +8,8 @@ const getUserByIdRoute = require('./routes/userGetUserById')
 const dbConnection = require('./config/db.config')
 const editUser = require('./routes/userEditUser')
 const deleteUser = require('./routes/userDeleteAll')
-const projectRoute = require('./routes/projects')
-const timesheetRoute = require('./routes/timesheets');
+const projectRoute = require('./routes/projectCRUD')
+const timesheetRoute = require('./routes/timesheetCRUD');
 
 require('dotenv').config();
 const SERVER_PORT = 8081
