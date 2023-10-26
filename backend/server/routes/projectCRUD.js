@@ -30,7 +30,25 @@ router.get('/projects', async (req, res) => {
     }
 });
 
+// Read specified project data
+router.get('/projects/:id', async (req, res) => {
+    try {
+        const projectId = req.params.id; // Extract the id from the URI parameter
+        const project = await projectModel.findById(projectId); // Use findById to find the project by its _id field
+
+        if (!project) {
+            return res.status(404).send({ message: "Project not found" });
+        }
+
+        res.send(project);
+    } catch (error) {
+        res.status(500).send({ message: "Error trying to retrieve the project" });
+    }
+});
+
+
 // Update a project
+// Give ChatGPT createProject + this method in order to create updateProject
 router.put('/projects/:projectId', async (req, res) => {
     const { projectName, projectDescription, viewers } = req.body;
 

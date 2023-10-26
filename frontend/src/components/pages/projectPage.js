@@ -10,7 +10,7 @@ function ProjectPage() {
   // Fetch the list of projects from your API
   useEffect(() => {
     // Make an API request to fetch the list of projects
-    fetch("http://localhost:8096/projects") // Use the actual URL of your projects endpoint
+    fetch("http://localhost:8081/projects/projects") // Use the actual URL of your projects endpoint
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -38,12 +38,12 @@ function ProjectPage() {
       {/* Display the list of projects */}
       <div className="project-cards">
         {projects.map((project) => (
-          <Card key={project.id} className="project-card">
+          <Card key={project._id} className="project-card">
             <Card.Body>
               <Card.Title>{project.projectName}</Card.Title>
               <Card.Text>{project.projectDescription}</Card.Text>
               {/* Link to the project's detail page */}
-              <Link to={`/project/${project.id}`}>
+              <Link to={`/projects/${project._id}`}>
                 <Button variant="primary">View Details</Button>
               </Link>
             </Card.Body>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
+//import { Link } from 'react-router-dom';
 
 function CreateProject() {
   const [projectData, setProjectData] = useState({
@@ -8,6 +10,7 @@ function CreateProject() {
     projectDescription: "",
     viewers: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +31,7 @@ function CreateProject() {
     };
   
     // Send the projectDataToSend to your API endpoint for creating a new project
-    fetch("http://localhost:8096/projects/projects", {
+    fetch("http://localhost:8081/projects/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,10 +42,13 @@ function CreateProject() {
       .then((data) => {
         // Handle the response from the API as needed
         console.log("New project created:", data);
-      })
+      //Navigate to projects/projects
+      }) 
+      
       .catch((error) => {
         console.error("Error creating project:", error);
       });
+      navigate("/projects")
   };
   
 
@@ -80,10 +86,13 @@ function CreateProject() {
             onChange={handleChange}
           />
         </Form.Group>
-
+        
+      
         <Button variant="primary" type="submit">
           Create Project
         </Button>
+       
+        
       </Form>
     </div>
   );
