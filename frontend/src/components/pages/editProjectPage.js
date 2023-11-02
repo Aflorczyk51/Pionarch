@@ -29,7 +29,7 @@ const EditUserPage = () =>{
     if (!password || password === '') newErrors.password = 'Input a valid password'
     else if (password.length < 8) newErrors.password = 'Password must be at least 8 characters'
     return newErrors
-  } // Edit to apply to projects
+  }
 
   // initialize form values and get userId on render
   const [form, setValues] = useState({userId : "", username: "", email: "", password: "" })
