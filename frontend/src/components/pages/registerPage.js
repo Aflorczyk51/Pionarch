@@ -9,7 +9,7 @@ const PRIMARY_COLOR = "#cc5c99";
 const SECONDARY_COLOR = "#0c0c1f";
 const url = "http://localhost:8081/user/signup";
 const Register = () => {
-  const [data, setData] = useState({ username: "", email: "", password: "", favline: "" });
+  const [data, setData] = useState({ username: "", email: "", password: ""});
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [light, setLight] = useState(false);
@@ -46,7 +46,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data: res } = await axios.post(url, data);
-      const {accessToken} = res
+      const { accessToken } = res;
       //store token in localStorage
       navigate("/login");
     } catch (error) {
@@ -102,16 +102,6 @@ const Register = () => {
                     type="password"
                     name="password"
                     placeholder="Password"
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formfavline">
-                  <Form.Label style={labelStyling}>favline</Form.Label>
-                  <Form.Label style={labelStyling}>(min. 8 characters)</Form.Label>
-                  <Form.Control
-                    type="favline"
-                    name="favline"
-                    placeholder="favline"
                     onChange={handleChange}
                   />
                 </Form.Group>

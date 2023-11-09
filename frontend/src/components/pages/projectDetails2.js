@@ -125,7 +125,7 @@ function ProjectDetails() {
             ))}
           </ul>
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit">Submit</button> // handle submit
           <button type="button" onClick={handleDelete} style={{ marginLeft: "10px" }}>
             Delete Project
           </button>

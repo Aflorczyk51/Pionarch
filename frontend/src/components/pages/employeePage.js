@@ -10,7 +10,7 @@ function EmployeePage() {
   // Fetch the list of employees from your API
   useEffect(() => {
     // Make an API request to fetch the list of employees
-    fetch("http://localhost:8096/employees") // Use the actual URL of your employees endpoint
+    fetch("http://localhost:8081/user/getAll") // Use the actual URL of your employees endpoint
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -30,6 +30,7 @@ function EmployeePage() {
     <div>
       <h1>Employees</h1>
       
+      <h5>(This button may not be needed)</h5>
       {/* Button to create a new employee */}
       <Link to="/create-employee">
         <Button variant="primary">Create New Employee</Button>
@@ -38,12 +39,12 @@ function EmployeePage() {
       {/* Display the list of employees */}
       <div className="employee-cards">
         {employees.map((employee) => (
-          <Card key={employee.id} className="employee-card">
+          <Card key={employee._id} className="employee-card">
             <Card.Body>
-              <Card.Title>{employee.employeeName}</Card.Title>
-              <Card.Text>{employee.employeeDescription}</Card.Text>
+              <Card.Title>{employee.username}</Card.Title> // change to lastName, firstName
+              <Card.Text>{employee.email}</Card.Text>
               {/* Link to the employee's detail page */}
-              <Link to={`/employee/${employee.id}`}>
+              <Link to={`/employee/${employee._id}`}>
                 <Button variant="primary">View Details</Button>
               </Link>
             </Card.Body>
