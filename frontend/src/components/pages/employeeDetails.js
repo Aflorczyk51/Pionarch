@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import getUserInfo from '../../utilities/decodeJwt';
 
 function EmployeeDetails() {
   const { id } = useParams();
@@ -18,6 +19,12 @@ function EmployeeDetails() {
   useEffect(() => {
     setLoading(true);
     setError(null);
+    const userData = getUserInfo();
+    setEmployeeDetails({
+      firstname: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+    });
 
     axios
       .get(`http://localhost:8081/user/getUserById/${id}`)
@@ -49,7 +56,7 @@ function EmployeeDetails() {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:8081/editUser`, editedDetails)
+      .put(`http://localhost:8081/user/editUser`, editedDetails)
       .then((response) => {
         console.log("Employee details updated successfully:", response.data);
       })
