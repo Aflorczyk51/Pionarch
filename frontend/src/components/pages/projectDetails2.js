@@ -6,7 +6,6 @@ import './ProjectDetails.css';
 function ProjectDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
- 
 
   const [projectDetails, setProjectDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,11 +15,13 @@ function ProjectDetails() {
     projectDescription: "",
     viewers: [],
   });
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
+    // Fetch project details
     axios
       .get(`http://localhost:8081/projects/projects/${id}`)
       .then((response) => {
@@ -33,6 +34,16 @@ function ProjectDetails() {
         setError(error.message);
         setLoading(false);
       });
+
+    // Fetch the list of users
+    axios
+      .get(`http://localhost:8081/user/getAll`)
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
   }, [id]);
 
   const handleInputChange = (event) => {
@@ -41,6 +52,21 @@ function ProjectDetails() {
       ...prevDetails,
       [name]: value,
     }));
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setEditedDetails((prevDetails) => ({
+        ...prevDetails,
+        viewers: [...prevDetails.viewers, value],
+      }));
+    } else {
+      setEditedDetails((prevDetails) => ({
+        ...prevDetails,
+        viewers: prevDetails.viewers.filter((viewer) => viewer !== value),
+      }));
+    }
   };
 
   const handleSubmit = (event) => {
@@ -104,28 +130,20 @@ function ProjectDetails() {
           </div>
           <br />
           <h3>Users with Access:</h3>
-          <h5>// Change users to be listed differently</h5>
-          <ul>
-            {editedDetails.viewers.map((viewer, index) => (
-              <li key={index}>
-                <input
-                  type="text"
-                  name={`viewer-${index}`}
-                  value={viewer}
-                  onChange={(event) => {
-                    const updatedViewers = [...editedDetails.viewers];
-                    updatedViewers[index] = event.target.value;
-                    setEditedDetails({
-                      ...editedDetails,
-                      viewers: updatedViewers,
-                    });
-                  }}
-                />
-              </li>
+          <h5>Select users from the list:</h5>
+          <select
+            multiple
+            value={editedDetails.viewers}
+            onChange={handleCheckboxChange}
+          >
+            {users.map((user) => (
+              <option key={user._id} value={user.username}>
+                {user.username}
+              </option>
             ))}
-          </ul>
+          </select>
           <br />
-          <button type="submit">Submit</button> // handle submit
+          <button type="submit">Submit</button>
           <button type="button" onClick={handleDelete} style={{ marginLeft: "10px" }}>
             Delete Project
           </button>

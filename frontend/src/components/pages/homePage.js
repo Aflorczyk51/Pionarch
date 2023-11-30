@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import './HomePage.css'; 
+import './AllPage.css';
 
 function HomePage() {
   return (

@@ -7,7 +7,11 @@ function EmployeeDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [employeeDetails, setEmployeeDetails] = useState(null);
+  const [employeeDetails, setEmployeeDetails] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editedDetails, setEditedDetails] = useState({
@@ -20,21 +24,18 @@ function EmployeeDetails() {
     setLoading(true);
     setError(null);
     const userData = getUserInfo();
-    setEmployeeDetails({
-      firstname: userData.firstName,
+    if(userData) {
+      setEmployeeDetails({
+      firstName: userData.firstName,
       lastName: userData.lastName,
       email: userData.email,
     });
-
+  }
     axios
       .get(`http://localhost:8081/user/getUserById/${id}`)
       .then((response) => {
         setEmployeeDetails(response.data);
-        setEditedDetails({
-          firstName: response.data.firstName,
-          lastName: response.data.lastName,
-          email: response.data.email,
-        });
+        setEditedDetails(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -59,6 +60,7 @@ function EmployeeDetails() {
       .put(`http://localhost:8081/user/editUser`, editedDetails)
       .then((response) => {
         console.log("Employee details updated successfully:", response.data);
+        navigate("/employees");
       })
       .catch((error) => {
         console.error("Error updating employee details:", error);

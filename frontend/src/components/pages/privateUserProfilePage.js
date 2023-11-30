@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import getUserInfo from "../../utilities/decodeJwt";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import './AllPage.css';
 
 //link to service
 //http://localhost:8096/privateUserProfile

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "./RegisterPage.css"
 
 const url = "http://localhost:8081/user/signup";
 const Register = () => {
@@ -39,7 +40,7 @@ const Register = () => {
 
   return (
     <>
-      <section className="vh-100">
+      <section className="vh-100 register-container">
         <div className="container h-100 d-flex align-items-center justify-content-center">
           <div className="col-md-8 col-lg-6 col-xl-4">
             <h1>Pionarch WebApp</h1>

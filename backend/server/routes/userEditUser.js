@@ -16,15 +16,7 @@ router.put('/editUser', async (req, res) => {
     // Destructure and extract user information from the request body
     const { userId, username, email, password, firstName, lastName } = req.body;
 
-    // Check if username is available
-    const existingUser = await newUserModel.findOne({ username: username });
-    if (existingUser && String(existingUser._id) !== userId) {
-      return res.status(409).send({ message: "Username is taken, pick another" });
-    }
-
-    // Generate salt and hash for the password
-    const saltRounds = 10;
-    const hashPassword = await bcrypt.hash(password, saltRounds);
+   
 
     // Find and update user using stored information
     const updatedUser = await newUserModel.findByIdAndUpdate(
@@ -34,7 +26,7 @@ router.put('/editUser', async (req, res) => {
         lastName: lastName,
         username: username,
         email: email,
-        password: hashPassword
+        password: password
       },
       { new: true } // Return the modified document instead of the original
     );
@@ -51,7 +43,7 @@ router.put('/editUser', async (req, res) => {
       firstName,
       lastName,
       username,
-      hashPassword
+      password
     );
 
     // Set the Authorization header with the new token

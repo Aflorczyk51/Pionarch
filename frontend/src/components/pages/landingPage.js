@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import './LandingPage.css';
+import './AllPage.css';
 
 const Landingpage = () => {
   return (
-    <div className="landing-container">
+    <div className="landing-container register-container">
       <h1 className="landing-title">Pionarch</h1>
 
       <div className="landing-buttons">

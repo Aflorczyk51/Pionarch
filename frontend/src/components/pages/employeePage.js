@@ -10,7 +10,7 @@ function EmployeePage() {
   // Fetch the list of employees from your API
   useEffect(() => {
     // Make an API request to fetch the list of employees
-    fetch("http://localhost:8081/user/getAll") // Use the actual URL of your employees endpoint
+    fetch("http://localhost:8081/user/getAll")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -25,23 +25,18 @@ function EmployeePage() {
         console.error("Error fetching employees:", error);
       });
   }, []);
-  
+
   return (
     <div>
       <h1>Employees</h1>
-      
-      <h5>(This button may not be needed)</h5>
-      {/* Button to create a new employee */}
-      <Link to="/create-employee">
-        <Button variant="primary">Create New Employee</Button>
-      </Link>
-      
+
       {/* Display the list of employees */}
       <div className="employee-cards">
         {employees.map((employee) => (
           <Card key={employee._id} className="employee-card">
             <Card.Body>
-              <Card.Title>{employee.username}</Card.Title> // change to lastName, firstName
+              <Card.Title style={{ textTransform: 'capitalize' }}>{employee.lastName}, {employee.firstName}</Card.Title>
+              <Card.Text>{employee.username}</Card.Text>
               <Card.Text>{employee.email}</Card.Text>
               {/* Link to the employee's detail page */}
               <Link to={`/employee/${employee._id}`}>
