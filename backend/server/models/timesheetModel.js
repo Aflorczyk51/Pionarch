@@ -3,15 +3,20 @@ const mongoose = require("mongoose");
 //user schema/model
 const newTimesheetSchema = new mongoose.Schema(
   {
-    timesheetName: {
+    title: {
       type: String,
       required: true,
-      label: "timesheetName",
+      label: "title",
     },
-    projectName: {
+      userId: {
+        type: String,
+        required: true,
+        label: "userId",
+      },
+    projectDescription: {
       type: String,
       required: false,
-      label: "projectprojectName",
+      label: "projectDescription",
     },
     hours: { 
       type: Number,

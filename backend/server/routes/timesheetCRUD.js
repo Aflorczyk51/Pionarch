@@ -6,13 +6,15 @@ const timesheetModel = require('../models/timesheetModel'); // Import your times
 router.post('/timesheets', async (req, res) => {
     try {
         // Parse request body to get timesheet data
-        const { employeeId, date, hoursWorked } = req.body;
+        const { title, userId, projectDescription, hours, date} = req.body;
 
         // Create a new timesheet
         const newTimesheet = new timesheetModel({
-            employeeId: employeeId,
-            date: date,
-            hoursWorked: hoursWorked
+            title: title,
+            userId: userId,
+            projectDescription: projectDescription,
+            hours: hours,
+            date: date
         });
 
         // Save the new timesheet
