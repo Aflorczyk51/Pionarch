@@ -21,7 +21,7 @@ const CreateEmployee = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("${process.env.REACT_APP_BACKEND_SERVER_URI}/users", formData);
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_SERVER_URI}/users`, formData);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

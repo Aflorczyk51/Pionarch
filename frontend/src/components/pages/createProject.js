@@ -31,7 +31,7 @@ function CreateProject() {
     };
   
     // Send the projectDataToSend to your API endpoint for creating a new project
-    fetch("${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects", {
+    fetch(`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

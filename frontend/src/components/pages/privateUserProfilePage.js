@@ -26,7 +26,7 @@ const PrivateUserProfile = () => {
 
   const PRIMARY_COLOR = "#cc5c99";
   const SECONDARY_COLOR = "#0c0c1f";
-  const url = "${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser";
+  const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

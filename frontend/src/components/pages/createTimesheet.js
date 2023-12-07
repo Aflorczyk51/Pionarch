@@ -33,7 +33,7 @@ function CreateTimesheet() {
     };
   
     // Send the timesheetDataToSend to your API endpoint for creating a new timesheet
-    fetch("${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets", {
+    fetch(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

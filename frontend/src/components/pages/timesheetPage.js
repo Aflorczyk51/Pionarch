@@ -7,7 +7,7 @@ function TimesheetPage() {
   const [timesheets, setTimesheets] = useState([]);
 
   useEffect(() => {
-    fetch("${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets")
+    fetch(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
