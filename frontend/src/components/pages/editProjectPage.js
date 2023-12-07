@@ -10,7 +10,7 @@ import getUserInfo from '../../utilities/decodeJwt';
 
 const EditUserPage = () =>{
 
-  const url = "http://localhost:8081/projects/id"; // Update Url, must end with actual projectID
+  const url = "${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/id"; // Update Url, must end with actual projectID
 
   const navigate = useNavigate();
 

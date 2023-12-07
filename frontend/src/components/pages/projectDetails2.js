@@ -23,7 +23,7 @@ function ProjectDetails() {
 
     // Fetch project details
     axios
-      .get(`http://localhost:8081/projects/projects/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects/${id}`)
       .then((response) => {
         setProjectDetails(response.data);
         setEditedDetails(response.data);
@@ -37,7 +37,7 @@ function ProjectDetails() {
 
     // Fetch the list of users
     axios
-      .get(`http://localhost:8081/user/getAll`)
+      .get(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/getAll`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -73,7 +73,7 @@ function ProjectDetails() {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:8081/projects/projects/${id}`, editedDetails)
+      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects/${id}`, editedDetails)
       .then((response) => {
         console.log("Project details updated successfully:", response.data);
       })
@@ -87,7 +87,7 @@ function ProjectDetails() {
     const confirmDelete = window.confirm("Are you sure you want to delete this project?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8081/projects/projects/${id}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects/${id}`)
         .then(() => {
           console.log("Project deleted successfully");
           navigate("/projects")

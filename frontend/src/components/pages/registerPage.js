@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./RegisterPage.css"
 
-const url = "http://localhost:8081/user/signup";
+const url = "${process.env.REACT_APP_BACKEND_SERVER_URI}/user/signup";
 const Register = () => {
   const [data, setData] = useState({ username: "", firstName: "", lastName: "", email: "", password: "" });
   const [error, setError] = useState("");

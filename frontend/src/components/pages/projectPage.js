@@ -11,7 +11,7 @@ function ProjectPage() {
   // Fetch the list of projects from your API
   useEffect(() => {
     // Make an API request to fetch the list of projects
-    fetch("http://localhost:8081/projects/projects") // Use the actual URL of your projects endpoint
+    fetch("${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects") // Use the actual URL of your projects endpoint
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

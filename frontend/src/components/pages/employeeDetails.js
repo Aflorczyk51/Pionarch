@@ -32,7 +32,7 @@ function EmployeeDetails() {
     });
   }
     axios
-      .get(`http://localhost:8081/user/getUserById/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/getUserById/${id}`)
       .then((response) => {
         setEmployeeDetails(response.data);
         setEditedDetails(response.data);
@@ -57,7 +57,7 @@ function EmployeeDetails() {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:8081/user/editUser`, editedDetails)
+      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser`, editedDetails)
       .then((response) => {
         console.log("Employee details updated successfully:", response.data);
         navigate("/employees");
@@ -71,7 +71,7 @@ function EmployeeDetails() {
     const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8081/employees/employees/${id}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/employees/employees/${id}`)
         .then(() => {
           console.log("Employee deleted successfully");
           navigate("/employees");
