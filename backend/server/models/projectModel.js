@@ -13,7 +13,7 @@ const newProjectSchema = new mongoose.Schema(
       required: false,
       label: "projectDescription",
     },
-    viewers: { // Needs to be thought about. It's possible to list the projects that a user can see under the user collection, or here. Which is gonna be less messy?
+    viewers: { 
       type: [String], 
       required: true,
       label: "projectName",

@@ -31,7 +31,7 @@ const newUserSchema = new mongoose.Schema(
     role: {
       type: String,
       required: false,
-      label: "role", // Figure out where to put 0 = admin, 1 = employee, 2 = client
+      label: "role",
     },
     date: {
       type: Date,

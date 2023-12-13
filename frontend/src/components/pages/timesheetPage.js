@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import "./TimeSheetPage.css"
+import "./TimesheetPage.css"
 
 function TimesheetPage() {
   const [timesheets, setTimesheets] = useState([]);

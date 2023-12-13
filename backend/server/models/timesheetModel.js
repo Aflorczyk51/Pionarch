@@ -26,7 +26,7 @@ const newTimesheetSchema = new mongoose.Schema(
     date: {
       type: Date,
       default: Date.now,
-    }, // Need to either tie UserID to here, or TimesheetID to User
+    }, 
   },
   { collection: "timesheets" }
 );
