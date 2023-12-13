@@ -7,23 +7,16 @@
 
 .custom-navbar {
   background-color: #f8f9fa; /* Default Bootstrap background color */
-  border-bottom: 1px solid #000000; /* Black border at the bottom of the Navbar */
+  border-bottom: 1px solid #dee2e6; /* Default Bootstrap border at the bottom of the Navbar */
   position: static; /* Reset position to static */
 }
 
 .custom-navbar .nav-link {
   color: #007bff; /* Default Bootstrap link color */
-  padding: 0.75rem 1.5rem; /* Adjusted padding for links */
-  font-size: 1.25rem; /* Adjusted font size for links */
+  padding: 0.5rem 1rem; /* Default Bootstrap padding for links */
+  font-size: 1rem; /* Default Bootstrap font size for links */
   text-align: center;
-}
-
-.custom-navbar .nav-link-start {
-  border-right: 1px solid #000000; /* Add black border to the right of the Start button */
-}
-
-.custom-navbar .nav-link-home {
-  border-left: 1px solid #000000; /* Add black border to the left of the Home button */
+  border-left: none; /* Remove the border from links */
 }
 
 .custom-navbar .nav-link:hover {

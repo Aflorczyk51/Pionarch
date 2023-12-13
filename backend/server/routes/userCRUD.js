@@ -23,9 +23,11 @@ router.put('/users/:userId', async (req, res) => {
         const updatedUser = await userModel.findByIdAndUpdate(
             req.params.userId,
             {
+                firstName: firstName,
+                lastName: lastName,
                 username: username,
                 email: email,
-                role: role
+                password: password
             },
             { new: true }
         );

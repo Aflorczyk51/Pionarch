@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 function EditTimesheet() {
-  // Assume your timesheet data structure includes a unique identifier (e.g., timesheetId)
   const { id } = useParams();
 
   const [dailyHours, setDailyHours] = useState({
@@ -18,15 +17,13 @@ function EditTimesheet() {
   });
 
   useEffect(() => {
-    // Fetch timesheet data when the component mounts
     const fetchTimesheet = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`);
-        const timesheetData = response.data; // Adjust this based on your actual API response structure
-        setDailyHours(timesheetData); // Update state with timesheet data
+        const timesheetData = response.data; 
+        setDailyHours(timesheetData);
       } catch (error) {
         console.error("Error fetching timesheet data:", error);
-        // Handle error as needed
       }
     };
 
@@ -40,13 +37,26 @@ function EditTimesheet() {
     });
   };
 
-  // Add any necessary logic for interacting with the days (e.g., saving changes)
+  const handleSaveChanges = async () => {
+    try {
+      // Calculate the total hours
+      const totalHours = Object.values(dailyHours).reduce((acc, curr) => acc + parseFloat(curr), 0);
+
+      // Send a PUT request to update the timesheet with the new daily hours and total hours
+      await axios.put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`, {
+        ...dailyHours,
+        hours: totalHours,
+      });
+      console.log("Changes saved successfully!");
+    } catch (error) {
+      console.error("Error saving changes:", error);
+    }
+  };
 
   return (
     <div>
       <h2>Edit Timesheet for Week</h2>
-
-      {/* Display days and input fields */}
+      
       {Object.keys(dailyHours).map((day) => (
         <div key={day}>
           <p>{day}</p>
@@ -58,8 +68,9 @@ function EditTimesheet() {
         </div>
       ))}
 
-      {/* Add a button to save changes or perform other actions */}
-      <Button variant="primary">Save Changes</Button>
+      <Button variant="primary" onClick={handleSaveChanges}>
+        Save Changes
+      </Button>
     </div>
   );
 }
