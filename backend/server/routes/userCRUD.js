@@ -17,7 +17,7 @@ router.get('/users', async (req, res) => {
 router.put('/users/:userId', async (req, res) => {
     try {
         // Parse request body to get user data
-        const { username, email, role } = req.body;
+        const { firstName, lastName, username, email, password } = req.body;
 
         // Update the user by ID
         const updatedUser = await userModel.findByIdAndUpdate(

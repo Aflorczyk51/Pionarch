@@ -19,23 +19,23 @@ const PrivateUserProfile = () => {
     <div><h4>Log in to view this page.</h4></div>
   );
 
-  const { firstName } = user;
+  const { id, firstName } = user;
 
   return (
-    <div class="container">
-      <div class="col-md-12 text-center">
+    <div className="container">
+      <div className="col-md-12 text-center">
         <h1>{user && user.firstName}</h1>
-        <div class="col-md-12 text-center">
+        <div className="col-md-12 text-center">
           <br />
           <h3>
             Welcome to the Pionarch WebApp,{" "}
             <span className="firstName"> {firstName}</span>
           </h3>
           <br />
-          {/* Use Link to navigate to EditUserPage */}
-          <Link to="/editUserPage">
+          {/* Use Link to navigate to the user's own "employee details" page */}
+          <Link to={`/employees/${id}`}>
             <Button className="me-2">
-              Change Info
+              Change info
             </Button>
           </Link>
         </div>

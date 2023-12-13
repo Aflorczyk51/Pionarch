@@ -12,7 +12,7 @@
 }
 
 .custom-navbar .nav-link {
-  color: #007bff; /* Default Bootstrap link color */
+  color: #061e36; /* Default Bootstrap link color */
   padding: 0.5rem 1rem; /* Default Bootstrap padding for links */
   font-size: 1rem; /* Default Bootstrap font size for links */
   text-align: center;
@@ -20,5 +20,5 @@
 }
 
 .custom-navbar .nav-link:hover {
-  color: #0056b3; /* Default Bootstrap link color on hover */
+  color: #010508; /* Default Bootstrap link color on hover */
 }

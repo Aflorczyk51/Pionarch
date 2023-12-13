@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
@@ -53,6 +53,17 @@ function EditTimesheet() {
     }
   };
 
+  const handleDeleteTimesheet = async () => {
+    try {
+      // Send a DELETE request to remove the timesheet
+      await axios.delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`);
+      console.log("Timesheet deleted successfully!");
+      // Redirect to a different page or handle the deletion completion as needed
+    } catch (error) {
+      console.error("Error deleting timesheet:", error);
+    }
+  };
+
   return (
     <div>
       <h2>Edit Timesheet for Week</h2>
@@ -70,6 +81,10 @@ function EditTimesheet() {
 
       <Button variant="primary" onClick={handleSaveChanges}>
         Save Changes
+      </Button>
+
+      <Button variant="primary" onClick={handleDeleteTimesheet}>
+        Delete Timesheet
       </Button>
     </div>
   );
