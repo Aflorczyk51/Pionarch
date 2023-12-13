@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 function EditTimesheet() {
   // Assume your timesheet data structure includes a unique identifier (e.g., timesheetId)
-  const { timesheetId } = useParams();
+  const { id } = useParams();
 
   const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`;
 

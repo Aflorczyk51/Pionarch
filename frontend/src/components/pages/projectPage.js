@@ -30,7 +30,6 @@ function ProjectPage() {
   return (
     <div>
       <h1>Projects</h1>
-      <h1>{`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects`}</h1>
       {/* Button to create a new project */}
       <Link to="/create-project">
         <Button variant="primary">Create New Project</Button>
