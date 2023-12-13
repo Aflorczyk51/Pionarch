@@ -7,7 +7,7 @@ function TimesheetPage() {
   const [timesheets, setTimesheets] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets`)
+    fetch(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -40,7 +40,7 @@ function TimesheetPage() {
               <Card.Text>Date: {timesheet.date}</Card.Text>
               <Card.Text>Hours: {timesheet.hours}</Card.Text>
               {/* Use Link to navigate to TimesheetDetails page */}
-              <Link to={`/timesheet/${timesheet._id}`}>
+              <Link to={`/timesheets/${timesheet._id}`}>
                 <Button variant="primary">View Details</Button>
               </Link>
             </Card.Body>

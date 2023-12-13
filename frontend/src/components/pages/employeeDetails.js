@@ -57,7 +57,7 @@ function EmployeeDetails() {
     event.preventDefault();
 
     axios
-      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser/${id}`, editedDetails)
+      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/users/users/${id}`, editedDetails)
       .then((response) => {
         console.log("Employee details updated successfully:", response.data);
         navigate("/employees");
@@ -71,7 +71,7 @@ function EmployeeDetails() {
     const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
     if (confirmDelete) {
       axios
-        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/deleteUser/${id}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/users/users/${id}`)
         .then(() => {
           console.log("Employee deleted successfully");
           navigate("/employees");
