@@ -57,7 +57,7 @@ function EmployeeDetails() {
     event.preventDefault();
 
     axios
-      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser`, editedDetails)
+      .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/editUser/${id}`, editedDetails)
       .then((response) => {
         console.log("Employee details updated successfully:", response.data);
         navigate("/employees");

@@ -1,16 +1,12 @@
-// EditTimesheet.js
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 function EditTimesheet() {
   // Assume your timesheet data structure includes a unique identifier (e.g., timesheetId)
   const { id } = useParams();
 
-  const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`;
-
-  // Use state to manage the interaction with each day
   const [dailyHours, setDailyHours] = useState({
     Monday: 0,
     Tuesday: 0,
@@ -20,6 +16,22 @@ function EditTimesheet() {
     Saturday: 0,
     Sunday: 0,
   });
+
+  useEffect(() => {
+    // Fetch timesheet data when the component mounts
+    const fetchTimesheet = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`);
+        const timesheetData = response.data; // Adjust this based on your actual API response structure
+        setDailyHours(timesheetData); // Update state with timesheet data
+      } catch (error) {
+        console.error("Error fetching timesheet data:", error);
+        // Handle error as needed
+      }
+    };
+
+    fetchTimesheet();
+  }, [id]);
 
   const handleHoursChange = (day, hours) => {
     setDailyHours({

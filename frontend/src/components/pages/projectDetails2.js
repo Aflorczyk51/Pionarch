@@ -71,16 +71,19 @@ function ProjectDetails() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     axios
       .put(`${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects/${id}`, editedDetails)
       .then((response) => {
         console.log("Project details updated successfully:", response.data);
+        // Navigate to the project page after successful update
+        navigate("/projects");
       })
       .catch((error) => {
         console.error("Error updating project details:", error);
       });
   };
+  
 
   const handleDelete = () => {
     // Add a confirmation prompt before deleting
@@ -101,7 +104,7 @@ function ProjectDetails() {
   return (
     <div>
       <h1>Project Details</h1>
-
+  
       {loading ? (
         <p>Loading project details...</p>
       ) : error ? (
@@ -131,17 +134,19 @@ function ProjectDetails() {
           <br />
           <h3>Users with Access:</h3>
           <h5>Select users from the list:</h5>
-          <select
-            multiple
-            value={editedDetails.viewers}
-            onChange={handleCheckboxChange}
-          >
+          <div style={{ maxHeight: '150px', overflowY: 'auto', border: '1px solid #ccc', padding: '5px' }}>
             {users.map((user) => (
-              <option key={user._id} value={user.username}>
-                {user.username}
-              </option>
+              <div key={user._id} style={{ marginBottom: '5px' }}>
+                <input
+                  type="checkbox"
+                  value={user.username}
+                  checked={editedDetails.viewers.includes(user.username)}
+                  onChange={handleCheckboxChange}
+                />
+                <label style={{ marginLeft: '5px' }}>{user.username}</label>
+              </div>
             ))}
-          </select>
+          </div>
           <br />
           <button type="submit">Submit</button>
           <button type="button" onClick={handleDelete} style={{ marginLeft: "10px" }}>
@@ -153,6 +158,7 @@ function ProjectDetails() {
       )}
     </div>
   );
+  
 }
 
 export default ProjectDetails;
