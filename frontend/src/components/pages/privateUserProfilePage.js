@@ -1,58 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getUserInfo from "../../utilities/decodeJwt";
-import Form from "react-bootstrap/Form";
-import axios from "axios";
 import './AllPage.css';
 
-//link to service
-//http://localhost:8096/privateUserProfile
-
 const PrivateUserProfile = () => {
-  const [show, setShow] = useState(false);
   const [user, setUser] = useState({});
-  const [comments, setComments] = useState([]);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const [data, setData] = useState({ username: "", email: "", password: "" });
-  const [error, setError] = useState("");
-
-  const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.name]: input.value });
-  };
-
-  const PRIMARY_COLOR = "#cc5c99";
-  const SECONDARY_COLOR = "#0c0c1f";
-  const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/projects/projects`;
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data: res } = await axios.post(url, data);
-      const { accessToken } = res;
-      //store token in localStorage
-      navigate("/login");
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-      }
-    }
-  };
-
-  // handle logout button
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/");
-  };
-
-  
 
   useEffect(() => {
     const userInfo = getUserInfo();
@@ -62,9 +16,11 @@ const PrivateUserProfile = () => {
   }, []);
 
   if (!user.id) return (
-  <div><h4>Log in to view this page.</h4></div>
-  )
-  const { username, firstName, lastName, email, password } = user;
+    <div><h4>Log in to view this page.</h4></div>
+  );
+
+  const { firstName } = user;
+
   return (
     <div class="container">
       <div class="col-md-12 text-center">
@@ -76,14 +32,16 @@ const PrivateUserProfile = () => {
             <span className="firstName"> {firstName}</span>
           </h3>
           <br />
-          <Button className="me-2" href="/editUserPage">
-            Change Info
-          </
-          Button>
-</div>
-</div>
-</div>
-);
+          {/* Use Link to navigate to EditUserPage */}
+          <Link to="/editUserPage">
+            <Button className="me-2">
+              Change Info
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PrivateUserProfile;

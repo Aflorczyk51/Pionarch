@@ -28,7 +28,7 @@ function TimesheetPage() {
 
       {/* Link to CreateTimesheet page */}
       <Link to="/create-timesheet">
-        <Button variant="success">Create New Timesheet</Button>
+        <Button variant="primary">Create New Timesheet</Button>
       </Link>
 
       <div className="timesheet-cards">

@@ -8,7 +8,7 @@ function EditTimesheet() {
   // Assume your timesheet data structure includes a unique identifier (e.g., timesheetId)
   const { timesheetId } = useParams();
 
-  const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/:timesheetId`;
+  const url = `${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`;
 
   // Use state to manage the interaction with each day
   const [dailyHours, setDailyHours] = useState({
