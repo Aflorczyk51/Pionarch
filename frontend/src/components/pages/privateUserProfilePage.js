@@ -64,16 +64,16 @@ const PrivateUserProfile = () => {
   if (!user.id) return (
   <div><h4>Log in to view this page.</h4></div>
   )
-  const { id, email, username, password } = user;
+  const { username, firstName, lastName, email, password } = user;
   return (
     <div class="container">
       <div class="col-md-12 text-center">
-        <h1>{user && user.username}</h1>
+        <h1>{user && user.firstName}</h1>
         <div class="col-md-12 text-center">
           <br />
           <h3>
             Welcome to the Pionarch WebApp,{" "}
-            <span className="username"> @{username}</span>
+            <span className="firstName"> {firstName}</span>
           </h3>
           <br />
           <Button className="me-2" href="/editUserPage">

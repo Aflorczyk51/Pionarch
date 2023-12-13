@@ -31,7 +31,7 @@ function EmployeePage() {
       <h1>Employees</h1>
 
       {/* Display the list of employees */}
-      <div className="employee-cards">
+      <div className="employee-cards" style={{ marginBottom: "100px" }}>
         {employees.map((employee) => (
           <Card key={employee._id} className="employee-card">
             <Card.Body>

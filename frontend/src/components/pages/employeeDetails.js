@@ -71,7 +71,7 @@ function EmployeeDetails() {
     const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
     if (confirmDelete) {
       axios
-        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/employees/employees/${id}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/user/deleteUser/${id}`)
         .then(() => {
           console.log("Employee deleted successfully");
           navigate("/employees");

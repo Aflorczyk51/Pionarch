@@ -28,7 +28,7 @@ function TimesheetPage() {
 
       {/* Link to CreateTimesheet page */}
       <Link to="/create-timesheet">
-        <Button variant="success">Create New Timesheet</Button> // change color
+        <Button variant="success">Create New Timesheet</Button>
       </Link>
 
       <div className="timesheet-cards">
@@ -39,8 +39,10 @@ function TimesheetPage() {
               <Card.Text>{timesheet.description}</Card.Text>
               <Card.Text>Date: {timesheet.date}</Card.Text>
               <Card.Text>Hours: {timesheet.hours}</Card.Text>
-              {/* Add more details as needed */}
-              <Button variant="primary">View Details</Button>
+              {/* Use Link to navigate to TimesheetDetails page */}
+              <Link to={`/timesheet/${timesheet._id}`}>
+                <Button variant="primary">View Details</Button>
+              </Link>
             </Card.Body>
           </Card>
         ))}

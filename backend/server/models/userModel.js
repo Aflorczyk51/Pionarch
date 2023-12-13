@@ -35,7 +35,8 @@ const newUserSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      default: Date.now,
+      required: false,
+      label: "date"
     },
   },
   { collection: "users" }
