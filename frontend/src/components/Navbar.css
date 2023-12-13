@@ -1,28 +1,24 @@
 /* Navbar.css */
 
-/* Remove expanding behavior */
+/* Reset the styles to default Bootstrap styles for Navbar */
 .custom-navbar .navbar-collapse {
-  flex-grow: unset;
+  flex-grow: 1;
 }
 
-/* Set the background color to white */
 .custom-navbar {
-  background-color: white;
-  border-top: 1px solid #ccc; /* Optional: Add a border at the top of the Navbar */
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  background-color: #f8f9fa; /* Default Bootstrap background color */
+  border-bottom: 1px solid #dee2e6; /* Default Bootstrap border at the bottom of the Navbar */
+  position: static; /* Reset position to static */
 }
 
-/* Customize the Navbar links */
 .custom-navbar .nav-link {
-  color: #333; /* Link color */
-  padding: 20px 40px; /* Adjust padding to make items 5x bigger */
-  font-size: 25px; /* Make text 5x bigger */
-  text-align: center; /* Center the text horizontally */
-  border-left: 1px solid #ccc; /* Optional: Add a border between links */
+  color: #007bff; /* Default Bootstrap link color */
+  padding: 0.5rem 1rem; /* Default Bootstrap padding for links */
+  font-size: 1rem; /* Default Bootstrap font size for links */
+  text-align: center;
+  border-left: none; /* Remove the border from links */
 }
 
-.custom-navbar .nav-link:first-child {
-  border-left: none; /* Remove border from the first link */
+.custom-navbar .nav-link:hover {
+  color: #0056b3; /* Default Bootstrap link color on hover */
 }

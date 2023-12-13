@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import getUserInfo from '../../utilities/decodeJwt';
 
 const EditUserPage = () => {
@@ -20,9 +20,16 @@ const EditUserPage = () => {
     if (email && !/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Input a valid email address';
     if (password && password.length < 8) newErrors.password = 'Password must be at least 8 characters';
     return newErrors;
-  }
+  };
 
-  const [form, setValues] = useState({ userId: "", username: "", email: "", password: "", favline: "" });
+  const [form, setValues] = useState({
+    userId: "",
+    username: "",
+    email: "",
+    password: "",
+    favline: "",
+  });
+
   useEffect(() => {
     // Set initial form values using user data
     const userData = getUserInfo();
@@ -30,8 +37,8 @@ const EditUserPage = () => {
       userId: userData.id,
       username: userData.username,
       email: userData.email,
-      password: "",
-      favline: userData.favline
+      password: "", // You may choose to not fill the password for security reasons
+      favline: userData.favline,
     });
   }, []);
 
@@ -60,24 +67,22 @@ const EditUserPage = () => {
       } catch (error) {
         if (
           error.response &&
-          error.response.status != 409 &&
+          error.response.status !== 409 &&
           error.response.status >= 400 &&
           error.response.status <= 500
         ) {
           window.alert(error.response.data.message);
         }
-        if (error.response &&
-          error.response.status === 409
-        ) {
+        if (error.response && error.response.status === 409) {
           setErrors({ username: "Username is taken, pick another" });
         }
       }
     }
-  }
+  };
 
   const handleCancel = () => {
     navigate("/privateuserprofile");
-  }
+  };
 
   return (
     <div>
@@ -86,6 +91,29 @@ const EditUserPage = () => {
         <Card.Body>
           <Form>
             {/* Form fields here */}
+            <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={form.username}
+                onChange={handleChange}
+              />
+              {errors.username && <div className="text-danger">{errors.username}</div>}
+            </Form.Group>
+
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={form.email}
+                onChange={handleChange}
+              />
+              {errors.email && <div className="text-danger">{errors.email}</div>}
+            </Form.Group>
+
+            {/* You may choose to add other form fields as needed */}
 
             <Row>
               <Col>
@@ -100,12 +128,11 @@ const EditUserPage = () => {
                 </Button>
               </Col>
             </Row>
-
           </Form>
         </Card.Body>
       </Card>
     </div>
   );
-}
+};
 
 export default EditUserPage;
