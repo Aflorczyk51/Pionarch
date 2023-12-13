@@ -7,7 +7,7 @@
 
 .custom-navbar {
   background-color: #f8f9fa; /* Default Bootstrap background color */
-  border-bottom: 1px solid #dee2e6; /* Default Bootstrap border at the bottom of the Navbar */
+  border-bottom: 1px solid #000000; /* Black border at the bottom of the Navbar */
   position: static; /* Reset position to static */
 }
 
@@ -16,7 +16,11 @@
   padding: 0.5rem 1rem; /* Default Bootstrap padding for links */
   font-size: 1rem; /* Default Bootstrap font size for links */
   text-align: center;
-  border-left: none; /* Remove the border from links */
+  border-left: 1px solid #000000; /* Add black border between links */
+}
+
+.custom-navbar .nav-link:first-child {
+  border-left: none; /* Remove border from the first link */
 }
 
 .custom-navbar .nav-link:hover {

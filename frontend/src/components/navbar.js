@@ -26,7 +26,7 @@ export default function Navbar() {
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="/privateUserProfile">Profile</Nav.Link>
         </Nav>
-        <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
+        <Button variant="outline-dark" onClick={handleLogout}>Logout</Button>
       </Container>
     </ReactNavbar>
   );
