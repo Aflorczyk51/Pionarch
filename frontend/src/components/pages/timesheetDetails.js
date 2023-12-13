@@ -65,7 +65,7 @@ function EditTimesheet() {
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: "20px" }}>
       <h2>Edit Timesheet for Week</h2>
       
       {Object.keys(dailyHours).map((day) => (
@@ -79,9 +79,10 @@ function EditTimesheet() {
         </div>
       ))}
 
-      <Button variant="primary" onClick={handleSaveChanges}>
-        Save Changes
+      <Button variant="primary" type="submit" onClick={handleSaveChanges}>
+  Save Changes
       </Button>
+
 
       <Button variant="primary" onClick={handleDeleteTimesheet}>
         Delete Timesheet

@@ -1,0 +1,15 @@
+.timesheet-page {
+    padding: 20px; /* Add padding to provide space */
+  }
+  
+  .timesheet-cards-container {
+    height: 400px; /* Set a fixed height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .timesheet-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  

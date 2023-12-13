@@ -33,7 +33,7 @@ const PrivateUserProfile = () => {
           </h3>
           <br />
           {/* Use Link to navigate to the user's own "employee details" page */}
-          <Link to={`/employees/${id}`}>
+          <Link to={`/employee/${id}`}>
             <Button className="me-2">
               Change info
             </Button>
