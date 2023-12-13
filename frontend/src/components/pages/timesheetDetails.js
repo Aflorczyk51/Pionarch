@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 function EditTimesheet() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [dailyHours, setDailyHours] = useState({
     Monday: 0,
@@ -48,6 +50,7 @@ function EditTimesheet() {
         hours: totalHours,
       });
       console.log("Changes saved successfully!");
+      navigate("/timesheets")
     } catch (error) {
       console.error("Error saving changes:", error);
     }
@@ -58,6 +61,7 @@ function EditTimesheet() {
       // Send a DELETE request to remove the timesheet
       await axios.delete(`${process.env.REACT_APP_BACKEND_SERVER_URI}/timesheets/timesheets/${id}`);
       console.log("Timesheet deleted successfully!");
+      navigate("/timesheets")
       // Redirect to a different page or handle the deletion completion as needed
     } catch (error) {
       console.error("Error deleting timesheet:", error);
